@@ -24,5 +24,9 @@ export const getAuthUser = async () => {
 export const completeOnboarding = async (userData) => {
     const response = await axiosInstance.post("/auth/onBoarding", userData)
     return response.data
-    
 }
+
+export const logout = async () => {
+  const response = await axiosInstance.post("/auth/logout");
+  return response.data;
+};
