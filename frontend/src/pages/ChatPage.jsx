@@ -41,12 +41,20 @@ const ChatPage = () => {
           tokenData.token
         );
 
+        if (authUser._id === targetUserId) {
+          toast.error("You cannot start a chat with yourself.");
+          setLoading(false);
+          return;
+        }
+
         //
         const channelId = [authUser._id, targetUserId].sort().join("-");
 
         // you and me
         // if i start the chat => channelId: [myId, yourId]
         // if you start the chat => channelId: [yourId, myId]  => [myId,yourId]
+
+        const uniqueMembers = [...new Set([authUser._id, targetUserId])];
 
         const currChannel = client.channel("messaging", channelId, {
           members: [authUser._id, targetUserId],
