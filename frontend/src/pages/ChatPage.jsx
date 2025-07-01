@@ -3,9 +3,11 @@ import { useParams } from "react-router";
 import useAuthUser from "../hooks/useAuthUser";
 import { useQuery } from "@tanstack/react-query";
 import { getStreamToken } from "../lib/api";
-import { Channel, ChannelHeader, Chat, MessageInput, MessageList, Thread, Window, } from "stream-chat-react";
+
+import { Channel, ChannelHeader, Chat, MessageInput, MessageList, Thread, Window } from "stream-chat-react";
 import { StreamChat } from "stream-chat";
 import toast from "react-hot-toast";
+
 import ChatLoader from "../components/ChatLoader";
 import CallButton from "../components/CallButton";
 
@@ -29,9 +31,12 @@ const ChatPage = () => {
   useEffect(() => {
     const initChat = async () => {
       if (!tokenData?.token || !authUser) return;
+
       try {
         console.log("Initializing stream chat client...");
+
         const client = StreamChat.getInstance(STREAM_API_KEY);
+
         await client.connectUser(
           {
             id: authUser._id,
@@ -41,20 +46,12 @@ const ChatPage = () => {
           tokenData.token
         );
 
-        if (authUser._id === targetUserId) {
-          toast.error("You cannot start a chat with yourself.");
-          setLoading(false);
-          return;
-        }
-
         //
         const channelId = [authUser._id, targetUserId].sort().join("-");
 
         // you and me
         // if i start the chat => channelId: [myId, yourId]
         // if you start the chat => channelId: [yourId, myId]  => [myId,yourId]
-
-        const uniqueMembers = [...new Set([authUser._id, targetUserId])];
 
         const currChannel = client.channel("messaging", channelId, {
           members: [authUser._id, targetUserId],
