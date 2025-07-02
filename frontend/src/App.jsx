@@ -6,7 +6,6 @@ import LoginPage from "./pages/LoginPage.jsx";
 import NotificationsPage from "./pages/NotificationsPage.jsx";
 import CallPage from "./pages/CallPage.jsx";
 import ChatPage from "./pages/ChatPage.jsx";
-import OnboardingPage from "./pages/OnboardingTemp.jsx";
 
 import { Toaster } from "react-hot-toast";
 
@@ -14,6 +13,7 @@ import PageLoader from "./components/PageLoader.jsx";
 import useAuthUser from "./hooks/useAuthUser.js";
 import Layout from "./components/Layout.jsx";
 import { useThemeStore } from "./store/useThemeStore.js";
+import OnboardingPage from "./pages/OnBoardingPage.jsx";
 
 const App = () => {
   const { isLoading, authUser } = useAuthUser();
