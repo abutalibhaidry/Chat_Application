@@ -6,7 +6,7 @@ import { completeOnboarding } from '../lib/api.js'
 import { CameraIcon, LoaderIcon, MapPinIcon, ShipWheelIcon, ShuffleIcon } from 'lucide-react'
 import { LANGUAGES } from '../constants/index.js'
 
-const OnBoardingPage = () => {
+const OnboardingPage = () => {
 
   const { authUser } = useAuthUser()
   const queryClient = useQueryClient()
@@ -165,4 +165,4 @@ const OnBoardingPage = () => {
   )
 }
 
-export default OnBoardingPage
+export default OnboardingPage
