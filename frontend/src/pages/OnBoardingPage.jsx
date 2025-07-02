@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import useAuthUser from '../hooks/useAuthUser'
+import useAuthUser from '../hooks/useAuthUser.js'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
-import { completeOnboarding } from '../lib/api'
+import { completeOnboarding } from '../lib/api.js'
 import { CameraIcon, LoaderIcon, MapPinIcon, ShipWheelIcon, ShuffleIcon } from 'lucide-react'
 import { LANGUAGES } from '../constants/index.js'
 
