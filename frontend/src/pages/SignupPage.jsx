@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 import useSignUp from "../hooks/useSignUp";
 
-const SignupPage = () => {
+const SignUpPage = () => {
   const [signupData, setSignupData] = useState({
     fullName: "",
     email: "",
@@ -156,4 +156,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default SignUpPage;
