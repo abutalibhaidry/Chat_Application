@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { logout } from "../lib/api";
 
-const useLogout = (options = {}) => {
+const useLogout = () => {
   const queryClient = useQueryClient();
 
   const {
@@ -10,13 +10,9 @@ const useLogout = (options = {}) => {
     error,
   } = useMutation({
     mutationFn: logout,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["authUser"] }); // ✅ authUser query invalidate karo
-      if (options.onSuccess) options.onSuccess(); // ✅ redirect call karo
-    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["authUser"] }),
   });
 
   return { logoutMutation, isPending, error };
 };
-
 export default useLogout;

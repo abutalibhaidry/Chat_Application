@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import useAuthUser from '../hooks/useAuthUser.js'
+import useAuthUser from '../hooks/useAuthUser'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
-import { completeOnboarding } from '../lib/api.js'
+import { completeOnboarding } from '../lib/api'
 import { CameraIcon, LoaderIcon, MapPinIcon, ShipWheelIcon, ShuffleIcon } from 'lucide-react'
 import { LANGUAGES } from '../constants/index.js'
 
-const OnboardingPage = () => {
+const OnBoardingPage = () => {
 
   const { authUser } = useAuthUser()
   const queryClient = useQueryClient()
@@ -165,4 +165,4 @@ const OnboardingPage = () => {
   )
 }
 
-export default OnboardingPage
+export default OnBoardingPage
